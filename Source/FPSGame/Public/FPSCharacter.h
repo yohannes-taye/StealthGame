@@ -40,6 +40,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category="Projectile")
 	TSubclassOf<AFPSProjectile> ProjectileClass;
 
+	UPROPERTY(EditAnywhere, Category="Fun")
+	TSubclassOf<AActor> DumbCubeClass; 
+
 	/** Sound to play each time we fire */
 	UPROPERTY(EditDefaultsOnly, Category="Gameplay")
 	USoundBase* FireSound;
@@ -55,6 +58,8 @@ protected:
 	
 	/** Fires a projectile. */
 	void Fire();
+
+	void WhyNot(); 
 
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
