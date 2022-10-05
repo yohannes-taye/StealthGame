@@ -38,6 +38,7 @@ void AFPSObjectiveActor::PlayEffects()
 
 void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor* OtherActor)
 {
+	
 	Super::NotifyActorBeginOverlap(OtherActor);
 	PlayEffects();
 
@@ -45,8 +46,9 @@ void AFPSObjectiveActor::NotifyActorBeginOverlap(AActor* OtherActor)
 	if(Character)
 	{
 		Character->bIsCaryingObjective = true; 
-
+		
 		Destroy();
+		 
 	}
 }
 

@@ -52,8 +52,7 @@ void AFPSCharacter::Fire()
 	// try and fire a projectile
 	if (ProjectileClass)
 	{
-		if(GEngine)
-			GEngine->AddOnScreenDebugMessage(-1, 5.0, FColor::Red, TEXT("Spawn bullet"));
+		
 		FVector MuzzleLocation = GunMeshComponent->GetSocketLocation("Muzzle");
 		FRotator MuzzleRotation = GunMeshComponent->GetSocketRotation("Muzzle");
 
@@ -86,8 +85,6 @@ void AFPSCharacter::Fire()
 
 void AFPSCharacter::WhyNot()
 {
-	if(GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 5.0, FColor::Purple, TEXT("Spawn dumb cube"));
 	if(DumbCubeClass)
 	{
 		FVector MuzzleLocation = GunMeshComponent->GetSocketLocation("Muzzle");

@@ -48,5 +48,11 @@ public:
 	float GravitySphereRadius = 33000;
 
 	UPROPERTY(EditAnywhere, Category="Fx")
-	float BlackHoleSphereRadius = 100; 
+	float BlackHoleSphereRadius = 100;
+
+	UPROPERTY(EditAnywhere, Category="FX")
+	float PushBackRadius = 3000.0f;
+
+	UPROPERTY(EditAnywhere, Category="FX")
+	float PushBackForce = 3000.0f;
 };

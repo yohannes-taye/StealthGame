@@ -9,17 +9,19 @@ void AFPSBlackHole::OnInnerSphereOverLap(UPrimitiveComponent* PrimitiveComponent
 	
 	if(Actor)
 	{
-		if(TeleportPoint)
-		{
-			Actor->SetActorTransform(TeleportPoint->GetTransform());
-			if(GEngine)
-				GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, TEXT("Collision with black hole detected"));
-			
-		}
-		// else
+		// if(TeleportPoint)
 		// {
-		// 	Actor->Destroy(); 
+		// 	Actor->SetActorTransform(TeleportPoint->GetTransform());
+		// 	if(GEngine)
+		// 		GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, TEXT("Collision with black hole detected"));
+		// 	
 		// }
+		UStaticMeshComponent* MeshComponent = Cast<UStaticMeshComponent>(Actor->GetRootComponent());
+		if(MeshComponent)
+		{
+			 
+			MeshComponent->AddRadialForce(GetActorLocation(), PushBackRadius, PushBackForce, ERadialImpulseFalloff::RIF_Constant, true);		
+		}
 	}
 }
 
@@ -43,13 +45,6 @@ AFPSBlackHole::AFPSBlackHole()
 
 	SphereComponentBlackHole->OnComponentBeginOverlap.AddDynamic(this, &AFPSBlackHole::OnInnerSphereOverLap);
 	SphereComponentBlackHole->SetupAttachment(RootComponent);
-
-
-	// if(GEngine)
-	// {
-	// 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, TEXT("Is it called during initaliziation?")); 
-	// }
-	
 }
 
 // Called when the game starts or when spawned
@@ -66,8 +61,6 @@ void AFPSBlackHole::Tick(float DeltaTime)
 		
 	TArray<UPrimitiveComponent*> OverlappingComponents;
 	SphereComponentGravity->GetOverlappingComponents(OverlappingComponents);
-	// if(GEngine)
-	// 	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, FString::Printf(TEXT("Number of overlapping components: %lld"), OverlappingComponents.Num()));
 	for(int i =0; i < OverlappingComponents.Num(); i++)
 	{
 		

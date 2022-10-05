@@ -31,8 +31,6 @@ AFPSProjectile::AFPSProjectile()
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
 
-	// if(GEngine)
-	// 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, TEXT("SHIT")); 
 }
 
 
